@@ -12,7 +12,7 @@
         android:icon="@drawable/baseline_calendar_month_24"/>
 
     <item
-        android:id="@+id/fab"
+        android:id="@+id/add"
         android:title=""
         android:enabled="true"/>
 
