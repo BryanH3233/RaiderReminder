@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }else if (itemId == R.id.editevents) {
                 replaceFragment(new EditEventsFragment());
             }else if (itemId == R.id.map) {
-                replaceFragment(new MapFactor());
+                replaceFragment(new MapFragment());
             }
 
             return true;
