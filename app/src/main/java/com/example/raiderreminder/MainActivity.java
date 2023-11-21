@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.example.raiderreminder.databinding.ActivityMainBinding;
@@ -31,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new HomeFragment());
             } else if (itemId == R.id.calender) {
                 replaceFragment(new CalenderFragment());
-            }else if (itemId == R.id.notifications) {
-                replaceFragment(new NotificationFragment());
-            }else if (itemId == R.id.settings) {
-                replaceFragment(new SettingsFragment());
+            }else if (itemId == R.id.editevents) {
+                replaceFragment(new EditEventsFragment());
+            }else if (itemId == R.id.map) {
+                replaceFragment(new MapFactor());
             }
 
             return true;
