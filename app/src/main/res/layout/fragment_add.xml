@@ -208,7 +208,6 @@
     TODO: Done Button to confirm information is complete
           and to send the data to other place
     -->
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bttnDone"
         android:layout_width="wrap_content"
