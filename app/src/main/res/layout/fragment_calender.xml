@@ -18,10 +18,11 @@
         android:layout_marginTop="20dp">
 
         <Button
+            android:id="@+id/prevMonthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/Backward"
+            android:text=" &lt;- "
             android:textColor="@color/black"
             android:background="@null"
             android:textStyle="bold"
@@ -38,12 +39,12 @@
             android:textAlignment="center"
             android:textColor="@color/black"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/nextMonthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/foward"
+            android:text="-&gt;"
             android:textColor="@color/black"
             android:background="@null"
             android:textStyle="bold"

@@ -22,6 +22,8 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import android.widget.Button;
+
 import androidx.fragment.app.Fragment;
 
 public class CalenderFragment extends Fragment implements CalenderAdapter.OnItemListener
@@ -36,6 +38,13 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calender, container, false);
+
+        Button nextMonthButton = view.findViewById(R.id.nextMonthButton);
+        nextMonthButton.setOnClickListener(v -> nextMonthAction(v));
+
+        Button prevMonthButton = view.findViewById(R.id.prevMonthButton);
+        prevMonthButton.setOnClickListener(v -> previousMonthAction(v));
+
         initWidgets(view);
         selectedDate = LocalDate.now();
         setMonthView();
@@ -77,6 +86,16 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
         }
         return daysInMonthArray;
     }
+    public void previousMonthAction(View view)
+    {
+        selectedDate = selectedDate.minusMonths(1);
+        setMonthView();
+    }
+
+    public void nextMonthAction(View view) {
+        selectedDate = selectedDate.plusMonths(1);
+        setMonthView();
+    }
 
     private String monthYearFromDate(LocalDate date)
     {
@@ -87,20 +106,9 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
         calenderRecyclerView = view.findViewById(R.id.calenderRecyclerView);
         monthYearText = view.findViewById(R.id.monthYearTV);
     }
-    public void previousMonthAction(View view)
-    {
-        selectedDate = selectedDate.minusMonths(1);
-        setMonthView();
-    }
 
-    public void nextMonthAction(View view) {
-        try {
-            selectedDate = selectedDate.plusMonths(1);
-            setMonthView();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
+
 
     @Override
     public void onItemClick(int position, String dayText) {

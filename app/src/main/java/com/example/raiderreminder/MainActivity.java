@@ -12,6 +12,8 @@ import com.example.raiderreminder.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    // In MainActivity.java
+
 
 
     @Override
