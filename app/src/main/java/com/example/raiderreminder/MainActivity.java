@@ -26,24 +26,25 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
-            if (itemId == R.id.home){
+            if (itemId == R.id.home) {
                 replaceFragment(new HomeFragment());
             } else if (itemId == R.id.calender) {
-                replaceFragment(new CalenderFragment());
-            }else if (itemId == R.id.editevents) {
+                replaceFragment(new CalenderFragment()); // Use replaceFragment instead of creating a new instance
+            } else if (itemId == R.id.editevents) {
                 replaceFragment(new EditEventsFragment());
-            }else if (itemId == R.id.map) {
+            } else if (itemId == R.id.map) {
                 replaceFragment(new MapFragment());
             }
 
             return true;
         });
-
         binding.floatingActionButton.setOnClickListener(view -> {
             // Handle the FAB click event
             replaceFragment(new AddFragment());
         });
     }
+
+
 
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
