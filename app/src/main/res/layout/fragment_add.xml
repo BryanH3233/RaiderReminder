@@ -16,7 +16,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="Name"
+        android:hint="Event"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/lightGray"
         app:layout_constraintEnd_toEndOf="parent"
@@ -203,6 +203,26 @@
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <!--
+    TODO: Done Button to confirm information is complete
+          and to send the data to other place
+    -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bttnDone"
+        android:layout_width="wrap_content"
+        android:text="Done"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/MT_Blue"
+        app:cornerRadius="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="532dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

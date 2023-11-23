@@ -9,10 +9,11 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home"
-        android:textColor="@color/black"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Current Reminders"
+        android:textColor="@color/white"
+        android:gravity="center_horizontal"
+        android:background="@color/MT_Blue"
         android:textSize="40dp"/>
 
 </FrameLayout>
