@@ -1,8 +1,9 @@
 package com.example.raiderreminder;
+import java.text.SimpleDateFormat;
 import java.util.*;
 public class eventClass {
     // private data
-    private String name = ""; // event name
+    private String eventName = ""; // event name
     private int year = 0;
     private int month = 0;
     private int day = 0;
@@ -11,7 +12,7 @@ public class eventClass {
     private int second = 0;
     private String location = "None";
     // description maybe?
-    private Calendar task = Calendar.getInstance();
+    Calendar task = Calendar.getInstance();
     // create a timezone
 
     // public methods
@@ -22,8 +23,8 @@ public class eventClass {
     }
 
     // change the name and get the name
-    public void setName(String name){this.name = name;}
-    public String getName(){return name;}
+    public void setName(String eventName){this.eventName = eventName;}
+    public String getName(){return eventName;}
 
     // change the year or get the year
     public void setYear(int year){
@@ -61,10 +62,17 @@ public class eventClass {
     }
     public int getMinute(){return minute;}
 
-    public void setLocation(String location){
+    public void setLocation(String location) {
         this.location = location;
         createCalEvent(); // rest the calendar event
     }
+    public String getLocation(){return location;}
 
+
+    public String getDateAndTime() {
+        // Format the date and time as a string
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf.format(task.getTime());
+    }
 
 }
