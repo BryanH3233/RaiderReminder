@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-    
 
+<!-- Main vertical layout for calender -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,26 +9,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CalenderFragment">
-
+    <!-- Left button | Month Year | Right button: Vertically -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp">
-
+        <!-- Left button -->
         <Button
             android:id="@+id/prevMonthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=" &lt;- "
+            android:drawableLeft="@drawable/calendar_arrow_left_icon_136845"
             android:textColor="@color/black"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="previousMonthAction"
             android:textSize="20sp"/>
-
+        <!-- Center Month Year TextView  -->
         <TextView
             android:id="@+id/monthYearTV"
             android:layout_width="0dp"
@@ -38,19 +38,20 @@
             android:textSize="20sp"
             android:textAlignment="center"
             android:textColor="@color/black"/>
-
+        <!-- Right Botton -->
         <Button
             android:id="@+id/nextMonthButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-&gt;"
+            android:drawableLeft="@drawable/calendar_arrow_right_icon_135842"
             android:textColor="@color/black"
             android:background="@null"
             android:textStyle="bold"
             android:onClick="nextMonthAction"
             android:textSize="20sp"/>
     </LinearLayout>
+    <!-- Textview for Day labels -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,7 +121,7 @@
             android:textSize="16sp"/>
 
     </LinearLayout>
-
+    <!--Items/ rows -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calenderRecyclerView"
         android:layout_width="match_parent"
