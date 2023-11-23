@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new CalenderFragment()); // Use replaceFragment instead of creating a new instance
             } else if (itemId == R.id.editevents) {
                 replaceFragment(new EditEventsFragment());
-            } else if (itemId == R.id.map) {
-                replaceFragment(new MapFragment());
+            } else if (itemId == R.id.allevents) {
+                replaceFragment(new AllEventsFragment());
             }
 
             return true;
