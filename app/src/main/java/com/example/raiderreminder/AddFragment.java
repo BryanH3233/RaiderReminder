@@ -1,5 +1,9 @@
 package com.example.raiderreminder;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -77,4 +82,32 @@ public class AddFragment extends Fragment {
 
         EventManager.addEventToList(event);
     }
+
+    //@RequiresApi(api = Build.VERSION_CODES.M)
+    //private void setAlarm() {
+        //get time & date data from event
+        //// Set the alarm to trigger at the specified date and time
+    //        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+    //        Intent intent = new Intent(this, AlarmReceiver.class);
+    //        intent.putExtra("alarmInfo", alarmInfo); //appends alarm info (could be event info?) to intent
+    //        int requestCode = alarmInfo.getRequestCode();
+    //        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT| PendingIntent.FLAG_MUTABLE);
+    ////Cancel any existing alarms with the same requestCode
+    //        alarmManager.cancel(pendingIntent);
+
+    ////Set the new alarm
+    //        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+    //// Set alarms for 30 minutes, 1 hour, 1 day, and 1 week before
+    //        setSingleAlarm(alarmManager, intent, requestCode, calendar.getTimeInMillis() - 30 * 60 * 1000); // 30 minutes before
+    //        setSingleAlarm(alarmManager, intent, requestCode, calendar.getTimeInMillis() - 60 * 60 * 1000); // 1 hour before
+    //        setSingleAlarm(alarmManager, intent, requestCode, calendar.getTimeInMillis() - 24 * 60 * 60 * 1000); // 1 day before
+    //        setSingleAlarm(alarmManager, intent, requestCode, calendar.getTimeInMillis() - 7 * 24 * 60 * 60 * 1000); // 1 week before
+    //}
+
+    //Sets additional alarms
+    //private void setSingleAlarm(AlarmManager alarmManager, Intent intent, int requestCode, long timeInMillis) {
+        //PendingIntent pendingIntent = PendingIntent.getBroadcast(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT| PendingIntent.FLAG_MUTABLE);
+        //alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
+    //}
 }
