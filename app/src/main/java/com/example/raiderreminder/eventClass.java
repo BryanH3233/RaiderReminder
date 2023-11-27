@@ -10,12 +10,12 @@ public class eventClass {
     private int hour = 0; // military time
     private int minute = 0;
     private int second = 0;
-    private long timeInMillis = 0; //format used in setting timed notifications
     private String location = "None";
     private String notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
             + hour + ":" + minute + ", in " + location; //message for notification
     // description maybe?
     Calendar task = Calendar.getInstance();
+    private long timeInMillis = task.getTimeInMillis(); //format used in setting timed notifications
     // create a timezone
 
     // public methods
@@ -64,11 +64,13 @@ public class eventClass {
         createCalEvent(); // reset the calendar
     }
     public int getMinute(){return minute;}
-    public void setTimeInMillis(long timeInMillis){
-        this.timeInMillis = task.getTimeInMillis();
-        createCalEvent(); // reset the calendar
-    }
+
+    // get the time in milliseconds
     public long getTimeInMillis(){return timeInMillis;}
+    // get the notification message text
+    public String getNotificationMessage() {
+        return notificationMessage;
+    }
 
     public void setLocation(String location) {
         this.location = location;
