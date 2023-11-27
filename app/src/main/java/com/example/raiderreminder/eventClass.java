@@ -1,4 +1,5 @@
 package com.example.raiderreminder;
+import android.app.PendingIntent;
 import java.text.SimpleDateFormat;
 import java.util.*;
 public class eventClass {
@@ -13,6 +14,7 @@ public class eventClass {
     private String location = "None";
     private String notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
             + hour + ":" + minute + ", in " + location; //message for notification
+    private int requestCode = (int) System.currentTimeMillis();
     // description maybe?
     Calendar task = Calendar.getInstance();
     private long timeInMillis = task.getTimeInMillis(); //format used in setting timed notifications
@@ -84,5 +86,8 @@ public class eventClass {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return sdf.format(task.getTime());
     }
+
+    // Serializable implementation, may not ultimately need this tbd
+    private static final long serialVersionUID = 1L;
 
 }
