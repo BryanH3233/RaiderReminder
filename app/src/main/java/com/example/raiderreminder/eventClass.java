@@ -1,8 +1,19 @@
 package com.example.raiderreminder;
+
 import android.app.PendingIntent;
+import android.content.Intent;
+import android.content.Context;
+import android.os.Build;
+import android.app.AlarmManager;
+
+import androidx.annotation.RequiresApi;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
-public class eventClass {
+import java.io.Serializable;
+
+import android.widget.Toast;
+public class eventClass implements Serializable{
     // private data
     private String eventName = ""; // event name
     private int year = 0;
@@ -15,6 +26,7 @@ public class eventClass {
     private String notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
             + hour + ":" + minute + ", in " + location; //message for notification
     private int requestCode = (int) System.currentTimeMillis();
+    private PendingIntent pendingIntent;
     // description maybe?
     Calendar task = Calendar.getInstance();
     private long timeInMillis = task.getTimeInMillis(); //format used in setting timed notifications
@@ -25,6 +37,8 @@ public class eventClass {
     // creates a sets the time for a calendar object
     public void createCalEvent(){
         task.set(year,month -1,day,hour,minute,second);
+        notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
+                + hour + ":" + minute + ", in " + location;
     }
 
     // change the name and get the name
@@ -67,7 +81,10 @@ public class eventClass {
     }
     public int getMinute(){return minute;}
 
-    // get the time in milliseconds
+    // set and get the time in milliseconds
+    public void setTimeInMillis(){
+        this.timeInMillis = task.getTimeInMillis();
+    }
     public long getTimeInMillis(){return timeInMillis;}
     // get the notification message text
     public String getNotificationMessage() {
@@ -89,5 +106,25 @@ public class eventClass {
 
     // Serializable implementation, may not ultimately need this tbd
     private static final long serialVersionUID = 1L;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void setAlarm(Context context) {
+        // Get time & date data from event
+        // Set the alarm to trigger at the specified date and time
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        intent.putExtra("eventClass", this); // Appends alarm info (could be event info?) to intent
+        pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
+        // Cancel any existing alarms with the same requestCode
+        alarmManager.cancel(pendingIntent);
+
+        // Set the new alarm
+        Toast.makeText(context, "Alarm set for TOAST",Toast.LENGTH_SHORT).show();
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
+        //} else {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
+       // }
+    }
 
 }
