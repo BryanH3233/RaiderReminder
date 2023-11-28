@@ -85,4 +85,8 @@ public class eventClass {
         return sdf.format(task.getTime());
     }
 
+    public Calendar getTask() {
+        return task;
+    }
+
 }
