@@ -21,9 +21,11 @@ public class eventClass {
     // public methods
 
     // creates a sets the time for a calendar object
-    public void createCalEvent(){
-        task.set(year,month -1,day,hour,minute,second);
+    public void createCalEvent() {
+        task = Calendar.getInstance();
+        task.set(year, month - 1, day, hour, minute, second);
     }
+
 
     // change the name and get the name
     public void setName(String eventName){this.eventName = eventName;}

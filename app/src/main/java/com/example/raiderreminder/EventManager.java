@@ -1,4 +1,5 @@
 package com.example.raiderreminder;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -49,7 +50,19 @@ public class EventManager {
             }
         }
     }
-
+    // New method to get events for a specific day
+    // used in calenderFragment
+    public static ArrayList<eventClass> getEventsForDay(LocalDate date) {
+        ArrayList<eventClass> eventsForDay = new ArrayList<>();
+        for (eventClass event : events) {
+            if (event.getYear() == date.getYear() &&
+                    event.getMonth() == date.getMonthValue() &&
+                    event.getDay() == date.getDayOfMonth()) {
+                eventsForDay.add(event);
+            }
+        }
+        return eventsForDay;
+    }
 
     // Getter method to retrieve the list of events
     public static List<eventClass> getEvents() {

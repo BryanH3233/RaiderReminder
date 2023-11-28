@@ -80,11 +80,22 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
             if (i <= dayOfWeek || i > daysInMonth + dayOfWeek) {
                 daysInMonthArray.add("");
             } else {
-                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
+                int dayOfMonth = i - dayOfWeek;
+                daysInMonthArray.add(String.valueOf(dayOfMonth));
+
+                // Get events for the current day
+                ArrayList<eventClass> eventsForDay = EventManager.getEventsForDay(selectedDate.withDayOfMonth(dayOfMonth));
+                for (eventClass event : eventsForDay) {
+                    // Format the event information and add to the day's text
+                    String eventInfo = event.getName() + "\n" + event.getDateAndTime();
+                    daysInMonthArray.set(i - 1, daysInMonthArray.get(i - 1) + "\n" + eventInfo);
+                }
             }
         }
         return daysInMonthArray;
     }
+
+
 
     // Handle the action when the "Previous Month" button is clicked
     public void previousMonthAction(View view) {
@@ -114,9 +125,14 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
     @Override
     public void onItemClick(int position, String dayText) {
         if (!dayText.equals("")) {
-            // Show a toast message with the selected date
+            // Show a toast message with the selected date and events
             String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
+            ArrayList<eventClass> eventsForDay = EventManager.getEventsForDay(selectedDate);
+            for (eventClass event : eventsForDay) {
+                message += "\n" + event.getName() + "\n" + event.getDateAndTime();
+            }
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
         }
     }
+
 }
