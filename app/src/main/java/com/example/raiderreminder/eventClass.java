@@ -32,7 +32,7 @@ public class eventClass implements Serializable{
     // description maybe?
     Calendar task = Calendar.getInstance();
     private long timeInMillis = 0; //format used in setting timed notifications
-    public eventClass() { //iterates id's for request codes
+    public eventClass() { //Constructor: iterates id's for request codes
         this.uniqueId = uniqueIdCounter++;
     }
     // create a timezone
@@ -126,6 +126,11 @@ public class eventClass implements Serializable{
     }
 
     private void setAlarm(Context context, long alarmTimeInMillis, int type) {
+        // Check if the alarm time is in the past
+        if (alarmTimeInMillis <= System.currentTimeMillis()) {
+            Toast.makeText(context, "Cannot set alarm for past time", Toast.LENGTH_SHORT).show();
+            return;
+        }
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
 
