@@ -102,12 +102,12 @@ public class AddFragment extends Fragment {
 
         if (eventTime.after(now)) {
             // Set the alarm only if the event is in the future
-            event.setAlarm(requireContext()); // Pass the context of the fragment
+            event.setAlarms(requireContext()); // Pass the context of the fragment
 
             // If you want to set additional alarms (30 minutes, 1 hour, 1 day, and 1 week before), you can uncomment the following lines:
             // event.setSingleAlarm(alarmManager, intent, requestCode, eventTime.getTimeInMillis() - 30 * 60 * 1000); // 30 minutes before
             // event.setSingleAlarm(alarmManager, intent, requestCode, eventTime.getTimeInMillis() - 60 * 60 * 1000); // 1 hour before
-            // event.setSingleAlarm(alarmManager, intent, requestCode, eventTime.getTimeInMillis() - 24 * 60 * 60 * 1000); // 1 day before
+            //event.setAlarm1Day(requireContext()); // 1 day before
             // event.setSingleAlarm(alarmManager, intent, requestCode, eventTime.getTimeInMillis() - 7 * 24 * 60 * 60 * 1000); // 1 week before
         }
     }

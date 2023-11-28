@@ -15,6 +15,8 @@ import java.io.Serializable;
 import android.widget.Toast;
 public class eventClass implements Serializable{
     // private data
+    private static int uniqueIdCounter = 0;
+    private int uniqueId;
     private String eventName = ""; // event name
     private int year = 0;
     private int month = 0;
@@ -25,11 +27,14 @@ public class eventClass implements Serializable{
     private String location = "None";
     private String notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
             + hour + ":" + minute + ", in " + location; //message for notification
-    private int requestCode = (int) System.currentTimeMillis();
+    private int requestCode;
     private PendingIntent pendingIntent;
     // description maybe?
     Calendar task = Calendar.getInstance();
     private long timeInMillis = 0; //format used in setting timed notifications
+    public eventClass() { //iterates id's for request codes
+        this.uniqueId = uniqueIdCounter++;
+    }
     // create a timezone
 
     // public methods
@@ -106,25 +111,40 @@ public class eventClass implements Serializable{
         return sdf.format(task.getTime());
     }
 
+    public Calendar getTask() {
+        return task;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public void setAlarm(Context context) {
-        // Get time & date data from event
-        // Set the alarm to trigger at the specified date and time
+    public void setAlarms(Context context) {
+        // Set alarms for 1 day, 1 week, and 1 hour before
+        setAlarm(context, timeInMillis - 24 * 60 * 60 * 1000,1); // 1 day before
+        setAlarm(context, timeInMillis - 7 * 24 * 60 * 60 * 1000,2); // 1 week before
+        setAlarm(context, timeInMillis - 60 * 60 * 1000,3); // 1 hour before
+        // Set the main alarm
+        setAlarm(context, timeInMillis,0);
+    }
+
+    private void setAlarm(Context context, long alarmTimeInMillis, int type) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
-        intent.putExtra("eventClass", this); // Appends alarm info (could be event info?) to intent
-        pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
+
+        // Pass the event info needed to recreate PendingIntent
+        intent.putExtra("eventClass", this);
+
+        // Use a combination of uniqueId and requestCode to create a unique identifier
+        int uniqueRequestCode = uniqueId * 1000 + type; // Adjust as needed
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueRequestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
+
         // Cancel any existing alarms with the same requestCode
         alarmManager.cancel(pendingIntent);
 
         // Set the new alarm
-        Toast.makeText(context, "Alarm set for" + getTimeInMillis(),Toast.LENGTH_SHORT).show();
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            //alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
-        //} else {
-            alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
-       // }
+        Toast.makeText(context, "Alarm set for " + uniqueRequestCode, Toast.LENGTH_SHORT).show();
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTimeInMillis, pendingIntent);
     }
+
     // Serializable implementation, may not ultimately need this tbd
     private static final long serialVersionUID = 1L;
 }
