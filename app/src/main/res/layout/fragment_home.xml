@@ -1,72 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingSettingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/MT_Blue"
-        android:src="@drawable/baseline_app_settings_alt_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:maxImageSize="40dp"
-        app:tint="@color/white"
-        app:backgroundTint="@color/MT_Blue"/>
-
-    <TextView
-        android:id="@+id/textViewHomeDate"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/MT_Blue"
-        android:gravity="center"
-        android:text="Today's Date"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ScrollView
-        android:id="@+id/scrollViewHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHomeDate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:id="@+id/linearContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal">
+    <include
+        android:id="@+id/hometoolbar"
+        layout="@layout/hometoolbar"
+        />
 
 
-        <TextView
-                android:id="@+id/textViewHome1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView 1"
-                android:gravity="center"
-                style="@style/BlackTextView" />
 
-            <TextView
-                android:id="@+id/textViewHome2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView 2"
-                android:gravity="center"
-                style="@style/BlackTextView" />
-
-            <!-- Add more TextViews here -->
-
-        </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
