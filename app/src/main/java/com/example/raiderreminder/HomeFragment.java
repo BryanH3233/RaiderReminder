@@ -3,6 +3,7 @@ package com.example.raiderreminder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -118,18 +119,27 @@ public class HomeFragment extends Fragment {
         // Clear the existing TextViews in the LinearLayout
         linearContainer.removeAllViews();
 
-        // Display events in dynamically created TextViews
-        for (eventClass event : todayEvents) {
-            TextView eventTextView = createEventTextView(event);
-            linearContainer.addView(eventTextView);
+        if (todayEvents.isEmpty()) {
+            // If no events for today, display a message
+            TextView noEventsTextView = new TextView(getContext());
+            noEventsTextView.setText("No events today :(");
+            noEventsTextView.setGravity(Gravity.CENTER);
+            linearContainer.addView(noEventsTextView);
+        } else {
+            // Display events in dynamically created TextViews
+            for (eventClass event : todayEvents) {
+                TextView eventTextView = createEventTextView(event);
+                linearContainer.addView(eventTextView);
+            }
         }
     }
+
 
     private TextView createEventTextView(eventClass event) {
         TextView eventTextView = new TextView(getContext());
         // Customize this line to format the event information as needed
-        String eventText = event.getName() + "\n" + event.getDateAndTime() +
-                "\n"  + event.getLocation();
+        String eventText = "Event: "+ event.getName() + "\nDate: " + event.getDateAndTime() +
+                "\nLocation: "  + event.getLocation();
         eventTextView.setText(eventText);
         return eventTextView;
     }

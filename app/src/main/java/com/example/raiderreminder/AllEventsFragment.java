@@ -49,8 +49,8 @@ public class AllEventsFragment extends Fragment {
         if (index < events.size()) {
             eventClass event = events.get(index);
             // Customize this line to display the event information as needed
-            textView.setText(event.getName() + "\n" + event.getDateAndTime() +
-                    "\n"  + event.getLocation());
+            textView.setText("Event: "+ event.getName() + "\nDate: " + event.getDateAndTime() +
+                    "\nLocation: "  + event.getLocation());
         } else {
             // If the index is beyond the number of events, clear the TextView
             textView.setText("");

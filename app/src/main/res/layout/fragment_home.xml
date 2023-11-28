@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingSettingButton"
         android:layout_width="wrap_content"
@@ -19,7 +19,6 @@
         app:tint="@color/white"
         app:backgroundTint="@color/MT_Blue"/>
 
-    <!-- TODO: Display Today's Date -->
     <TextView
         android:id="@+id/textViewHomeDate"
         android:layout_width="match_parent"
@@ -35,76 +34,39 @@
     <ScrollView
         android:id="@+id/scrollViewHome"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHomeDate">
-
+        app:layout_constraintTop_toBottomOf="@+id/textViewHomeDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:id="@+id/linearContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:layout_gravity="center_horizontal">
 
-            <!-- Add more TextViews here -->
-            <TextView
+
+        <TextView
                 android:id="@+id/textViewHome1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView 1"
-                android:layout_marginTop="100dp"/>
+                android:gravity="center"
+                style="@style/BlackTextView" />
 
             <TextView
                 android:id="@+id/textViewHome2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView 2"
-                android:layout_marginTop="100dp"/>
+                android:gravity="center"
+                style="@style/BlackTextView" />
 
-            <TextView
-                android:id="@+id/textViewHome3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView 3"
-                android:layout_marginTop="100dp"/>
-
-            <TextView
-                android:id="@+id/textViewHome4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView 4"
-                android:layout_marginTop="100dp"/>
-
-            <TextView
-                android:id="@+id/textViewHome5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView 5"
-                android:layout_marginTop="100dp"/>
-
-            <TextView
-                android:id="@+id/textViewHome6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView 6"
-                android:layout_marginTop="100dp"/>
-
-            <TextView
-                android:id="@+id/textViewHome7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView 7"
-                android:layout_marginTop="100dp"/>
-
-            <!-- Add more TextViews as needed -->
+            <!-- Add more TextViews here -->
 
         </LinearLayout>
-
-
-
     </ScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
