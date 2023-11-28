@@ -81,6 +81,9 @@ public class AddFragment extends Fragment {
         event.setHour(eventHour);
         event.setMinute(eventMinute);
         event.setLocation(eventLocation);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(event.getYear(), event.getMonth() - 1, event.getDay(), event.getHour(), event.getMinute());
+        event.setTimeInMillis(calendar.getTimeInMillis());
         setAlarmForEvent(event);
 
         EventManager.addEventToList(event);

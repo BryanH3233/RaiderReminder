@@ -29,7 +29,7 @@ public class eventClass implements Serializable{
     private PendingIntent pendingIntent;
     // description maybe?
     Calendar task = Calendar.getInstance();
-    private long timeInMillis = task.getTimeInMillis(); //format used in setting timed notifications
+    private long timeInMillis = 0; //format used in setting timed notifications
     // create a timezone
 
     // public methods
@@ -82,8 +82,9 @@ public class eventClass implements Serializable{
     public int getMinute(){return minute;}
 
     // set and get the time in milliseconds
-    public void setTimeInMillis(){
-        this.timeInMillis = task.getTimeInMillis();
+    public void setTimeInMillis(long timeInMillis){
+        this.timeInMillis = timeInMillis;
+        createCalEvent(); // reset the calendar
     }
     public long getTimeInMillis(){return timeInMillis;}
     // get the notification message text
@@ -104,9 +105,6 @@ public class eventClass implements Serializable{
         return sdf.format(task.getTime());
     }
 
-    // Serializable implementation, may not ultimately need this tbd
-    private static final long serialVersionUID = 1L;
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void setAlarm(Context context) {
         // Get time & date data from event
@@ -119,12 +117,13 @@ public class eventClass implements Serializable{
         alarmManager.cancel(pendingIntent);
 
         // Set the new alarm
-        Toast.makeText(context, "Alarm set for TOAST",Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Alarm set for" + getTimeInMillis(),Toast.LENGTH_SHORT).show();
         //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
         //} else {
             alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
        // }
     }
-
+    // Serializable implementation, may not ultimately need this tbd
+    private static final long serialVersionUID = 1L;
 }
