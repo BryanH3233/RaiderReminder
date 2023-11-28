@@ -150,6 +150,35 @@ public class eventClass implements Serializable{
         alarmManager.set(AlarmManager.RTC_WAKEUP, alarmTimeInMillis, pendingIntent);
     }
 
+    public void cancelAlarms(Context context) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        // Cancel the main alarm
+        cancelAlarm(context, timeInMillis,0);
+
+        // Cancel alarms for 1 day, 1 week, and 1 hour before
+        cancelAlarm(context, timeInMillis - 24 * 60 * 60 * 1000,1); // 1 day before
+        cancelAlarm(context, timeInMillis - 7 * 24 * 60 * 60 * 1000,2); // 1 week before
+        cancelAlarm(context, timeInMillis - 60 * 60 * 1000,3); // 1 hour before
+    }
+    private void cancelAlarm(Context context, long alarmTimeInMillis, int type) {
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        // Pass the event info needed to recreate PendingIntent
+        intent.putExtra("eventClass", this);
+
+        // Use a combination of uniqueId and requestCode to create a unique identifier
+        int uniqueRequestCode = uniqueId * 1000 + type;
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueRequestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
+
+        // Cancel the alarm
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+            Toast.makeText(context, "Alarm canceled for " + alarmTimeInMillis, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     // Serializable implementation, may not ultimately need this tbd
     private static final long serialVersionUID = 1L;
 }
