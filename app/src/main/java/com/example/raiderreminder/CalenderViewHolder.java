@@ -10,6 +10,7 @@ public class CalenderViewHolder extends RecyclerView.ViewHolder implements View.
 {
     // TextView to display the day of the month
     public final TextView dayOfMonth;
+
     // Listener to handle item click events
     private final CalenderAdapter.OnItemListener onItemListener;
     // Constructor to initialize the ViewHolder with the item view and click listener

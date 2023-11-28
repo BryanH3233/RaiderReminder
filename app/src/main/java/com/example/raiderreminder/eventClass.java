@@ -36,6 +36,7 @@ public class eventClass implements Serializable{
 
     // creates a sets the time for a calendar object
     public void createCalEvent(){
+        task = Calendar.getInstance();
         task.set(year,month -1,day,hour,minute,second);
         notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
                 + hour + ":" + minute + ", in " + location;

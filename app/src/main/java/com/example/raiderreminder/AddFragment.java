@@ -23,7 +23,9 @@ public class AddFragment extends Fragment {
     private TextInputEditText inputNameEditText, inputDayEditText, inputMonthEditText,
             inputYearEditText, inputHourEditText, inputMinuteEditText, inputLocationEditText;
     private Button bttnDone;
-    EventManager eventsList = new EventManager();
+    private EventManager eventsList = new EventManager();
+    private eventClass event = new eventClass();
+    //EventManager eventsList = new EventManager();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +68,8 @@ public class AddFragment extends Fragment {
             eventYear = Integer.parseInt(inputYearEditText.getText().toString());
             eventHour = Integer.parseInt(inputHourEditText.getText().toString());
             eventMinute = Integer.parseInt(inputMinuteEditText.getText().toString());
+
+            event.createCalEvent(); // Set the Calendar instance in eventClass
         } catch (NumberFormatException e) {
             // Handle the case where the input is not a valid integer
             return;

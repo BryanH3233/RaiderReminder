@@ -39,7 +39,9 @@ class CalenderAdapter extends RecyclerView.Adapter<CalenderViewHolder>
     @Override
     public void onBindViewHolder(@NonNull CalenderViewHolder holder, int position)
     {
+        // Set the text of the day in the ViewHolder
         holder.dayOfMonth.setText(daysOfMonth.get(position));
+
     }
     // Return the size of your dataset (invoked by the layout manager)
     @Override
