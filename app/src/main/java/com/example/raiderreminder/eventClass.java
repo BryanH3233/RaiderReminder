@@ -138,7 +138,7 @@ public class eventClass implements Serializable{
         intent.putExtra("eventClass", this);
 
         // Use a combination of uniqueId and requestCode to create a unique identifier
-        int uniqueRequestCode = uniqueId * 1000 + type; // Adjust as needed
+        int uniqueRequestCode = uniqueId * 1000 + type;
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueRequestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
 

@@ -10,6 +10,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.util.Objects;
 
 public class AlarmReceiver extends BroadcastReceiver {
     private static final String CHANNEL_ID = "alarm_channel";
@@ -26,9 +27,9 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setContentTitle("Reminder Notification")
                 .setContentText(event.getNotificationMessage())
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
-
+        int notificationId = generateNotificationId(event);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        notificationManager.notify(1, builder.build());
+        notificationManager.notify(notificationId, builder.build());
     }
 
     //Creates channel for sending notifications (in newer SDK's)
@@ -45,5 +46,10 @@ public class AlarmReceiver extends BroadcastReceiver {
                 notificationManager.createNotificationChannel(channel);
             }
         }
+    }
+    // Method to generate a unique notification Id based on event data
+    private int generateNotificationId(eventClass event) {
+        // Uses a combo of event information data to create a unique id
+        return Objects.hash(event.getName(), event.getYear(), event.getMonth(), event.getDay(), event.getHour(), event.getMinute());
     }
 }
