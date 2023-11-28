@@ -27,8 +27,7 @@ public class eventClass implements Serializable{
     private String location = "None";
     private String notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
             + hour + ":" + minute + ", in " + location; //message for notification
-    private int requestCode;
-    private PendingIntent pendingIntent;
+
     // description maybe?
     Calendar task = Calendar.getInstance();
     private long timeInMillis = 0; //format used in setting timed notifications
@@ -151,7 +150,6 @@ public class eventClass implements Serializable{
     }
 
     public void cancelAlarms(Context context) {
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         // Cancel the main alarm
         cancelAlarm(context, timeInMillis,0);
