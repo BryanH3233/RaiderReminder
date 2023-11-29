@@ -23,33 +23,16 @@
             android:layout_height="200dp"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/eetextview1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="View Text"
-                app:layout_constraintBottom_toBottomOf="@id/editeventslayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/eetextview1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/editeventslayout"/>
-
-            <Button
-                android:id="@+id/eebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"
-                android:backgroundTint="@color/MT_Blue"
+                android:text="textView"
+                app:layout_constraintBottom_toBottomOf="@id/editeventslayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/eetextview1"
-                app:layout_constraintBottom_toBottomOf="@id/editeventslayout"/>
+                app:layout_constraintStart_toStartOf="parent" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
