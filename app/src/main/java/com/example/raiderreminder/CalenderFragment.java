@@ -1,41 +1,45 @@
 package com.example.raiderreminder;
 
+
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.fragment.app.FragmentManager;
+
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.os.Bundle;
-import android.view.View;
+
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.raiderreminder.databinding.ActivityMainBinding;
+
 
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 import android.widget.Button;
 
-import androidx.fragment.app.Fragment;
+
 public class CalenderFragment extends Fragment implements CalenderAdapter.OnItemListener {
 
     // View binding for the layout elements
     private TextView monthYearText;
     private RecyclerView calenderRecyclerView;
     private LocalDate selectedDate;
+
+
+
+    private ListView eventListView; // Add this ListView
 
     // Called when the fragment is created
     @Override
@@ -54,6 +58,8 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
         initWidgets(view);
         selectedDate = LocalDate.now();
         setMonthView();
+
+
 
         // Return the view for the fragment
         return view;
@@ -86,15 +92,14 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
                 daysInMonthArray.add("");
             } else {
                 int dayOfMonth = i - dayOfWeek;
-                daysInMonthArray.add(String.valueOf(dayOfMonth));
+                String dayString = String.valueOf(dayOfMonth);
 
-                // Get events for the current day
-                ArrayList<eventClass> eventsForDay = EventManager.getEventsForDay(selectedDate.withDayOfMonth(dayOfMonth));
-                for (eventClass event : eventsForDay) {
-                    // Format the event information and add to the day's text
-                    String eventInfo = event.getName() + "\n" + event.getDateAndTime();
-                    daysInMonthArray.set(i - 1, daysInMonthArray.get(i - 1) + "\n" + eventInfo);
+                // Check if there are events for the current day and add a dot
+                if (EventManager.getEventsForDay(selectedDate.withDayOfMonth(dayOfMonth)).size() > 0) {
+                    dayString += "★";
                 }
+
+                daysInMonthArray.add(dayString);
             }
         }
         return daysInMonthArray;
@@ -126,17 +131,34 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
         monthYearText = view.findViewById(R.id.monthYearTV);
     }
 
+
+
     // Handle the item click event in the RecyclerView
-    @Override
     public void onItemClick(int position, String dayText) {
         if (!dayText.equals("")) {
-            // Show a toast message with the selected date and events
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
-            ArrayList<eventClass> eventsForDay = EventManager.getEventsForDay(selectedDate);
-            for (eventClass event : eventsForDay) {
-                message += "\n" + event.getName() + "\n" + event.getDateAndTime();
+            // Extract the numeric part from dayText
+            String numericDay = dayText.replaceAll("[^\\d]", "");
+
+            if (!numericDay.isEmpty()) {
+                // Parse the numeric day
+                int dayPart = Integer.parseInt(numericDay);
+
+                // Get events for the current day
+                ArrayList<eventClass> eventsForDay = EventManager.getEventsForDay(selectedDate.withDayOfMonth(dayPart));
+
+                // Create a StringBuilder to build the event details
+                StringBuilder eventDetails = new StringBuilder();
+                for (eventClass event : eventsForDay) {
+                    eventDetails.append(event.getName()).append("\n").append(event.getDateAndTime()).append("\n\n");
+                }
+
+                // Show a dialog with the selected date and events
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                builder.setTitle("Selected Date: " + dayPart + " " + monthYearFromDate(selectedDate))
+                        .setMessage(eventDetails.toString())
+                        .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                        .show();
             }
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
         }
     }
 

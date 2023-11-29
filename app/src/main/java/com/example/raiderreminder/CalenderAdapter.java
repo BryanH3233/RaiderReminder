@@ -1,5 +1,6 @@
 package com.example.raiderreminder;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +37,25 @@ class CalenderAdapter extends RecyclerView.Adapter<CalenderViewHolder>
         return new CalenderViewHolder(view, onItemListener);
     }
     // Replace the contents of a view (invoked by the layout manager)
+
     @Override
-    public void onBindViewHolder(@NonNull CalenderViewHolder holder, int position)
-    {
+    public void onBindViewHolder(@NonNull CalenderViewHolder holder, int position) {
         // Set the text of the day in the ViewHolder
         holder.dayOfMonth.setText(daysOfMonth.get(position));
 
+        // Check if there are events for this day
+        if (daysOfMonth.get(position).contains("\n")) {
+            holder.dotView.setVisibility(View.VISIBLE); // Show the dot
+        } else {
+            holder.dotView.setVisibility(View.GONE); // Hide the dot
+        }
+        // Set a click listener for the item view
+        holder.itemView.setOnClickListener(v -> {
+            // Pass the clicked position and day text to the onItemClick method in the listener
+            if (onItemListener != null) {
+                onItemListener.onItemClick(position, daysOfMonth.get(position));
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
