@@ -2,9 +2,13 @@ package com.example.raiderreminder;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +26,16 @@ public class EditEventsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_editevents, container, false);
 
+        // Set up the toolbar
+        Toolbar eeToolbar = view.findViewById(R.id.editeventstoolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(eeToolbar);
+
+        // Set the title of the toolbar
+        ((AppCompatActivity) requireActivity()).getSupportActionBar().setTitle("Edit Events");
+
+        // Set Has Options Menu to true
+        setHasOptionsMenu(true);
+
         // Set up RecyclerView
         recyclerView = view.findViewById(R.id.eventsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -34,5 +48,12 @@ public class EditEventsFragment extends Fragment {
         recyclerView.setAdapter(eventAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu resource
+        inflater.inflate(R.menu.editeventstoolbar_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }
