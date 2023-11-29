@@ -124,7 +124,7 @@ public class eventClass implements Serializable{
         setAlarm(context, timeInMillis,0);
     }
 
-    private void setAlarm(Context context, long alarmTimeInMillis, int type) {
+    public void setAlarm(Context context, long alarmTimeInMillis, int type) {
         // Check if the alarm time is in the past
         if (alarmTimeInMillis <= System.currentTimeMillis()) {
             Toast.makeText(context, "Cannot set alarm for past time", Toast.LENGTH_SHORT).show();
@@ -159,7 +159,7 @@ public class eventClass implements Serializable{
         cancelAlarm(context, timeInMillis - 7 * 24 * 60 * 60 * 1000,2); // 1 week before
         cancelAlarm(context, timeInMillis - 60 * 60 * 1000,3); // 1 hour before
     }
-    private void cancelAlarm(Context context, long alarmTimeInMillis, int type) {
+    public void cancelAlarm(Context context, long alarmTimeInMillis, int type) {
         Intent intent = new Intent(context, AlarmReceiver.class);
         // Pass the event info needed to recreate PendingIntent
         intent.putExtra("eventClass", this);
