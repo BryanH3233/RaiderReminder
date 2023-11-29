@@ -43,6 +43,7 @@ class CalenderAdapter extends RecyclerView.Adapter<CalenderViewHolder>
         holder.dayOfMonth.setText(daysOfMonth.get(position));
 
     }
+
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount()
