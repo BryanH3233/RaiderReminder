@@ -10,6 +10,8 @@ public class CalenderViewHolder extends RecyclerView.ViewHolder implements View.
 {
     // TextView to display the day of the month
     public final TextView dayOfMonth;
+    // View for the dot
+    public final View dotView;
 
     // Listener to handle item click events
     private final CalenderAdapter.OnItemListener onItemListener;
@@ -19,6 +21,8 @@ public class CalenderViewHolder extends RecyclerView.ViewHolder implements View.
         super(itemView);
         // Find the TextView in the item layout
         dayOfMonth = itemView.findViewById(R.id.cellDaytext);
+        dotView = itemView.findViewById(R.id.dotView);
+
         // Set the click listener for the item view
         this.onItemListener = onItemListener;
         itemView.setOnClickListener(this);
