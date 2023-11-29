@@ -1,6 +1,7 @@
 package com.example.raiderreminder;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -40,6 +41,21 @@ public class EventManager {
         sortEvents();
     }
 
+    // Remove events that have already passed
+    public static void removeExpiredEvents() {
+        Calendar currentCalendar = Calendar.getInstance();
+
+        // Use an iterator to safely remove elements while iterating
+        Iterator<eventClass> iterator = events.iterator();
+        while (iterator.hasNext()) {
+            eventClass event = iterator.next();
+
+            // Check if the event has already passed
+            if (event.task.before(currentCalendar)) {
+                iterator.remove(); // Remove the expired event
+            }
+        }
+    }
     public static void removeEventFromList(String eventName) {
         for (Iterator<eventClass> iterator = events.iterator(); iterator.hasNext(); ) {
             eventClass event = iterator.next();
