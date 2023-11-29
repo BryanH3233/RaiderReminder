@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,12 +14,35 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class EditEventsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private EventAdapter eventAdapter;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.delete) {
+            // Get the list of events from the EventManager
+            List<eventClass> allEvents = EventManager.getEvents();
+
+            // Iterate through the events and remove the checked ones
+            for (Iterator<eventClass> iterator = allEvents.iterator(); iterator.hasNext(); ) {
+                eventClass event = iterator.next();
+                if (event.isChecked()) {
+                    iterator.remove();
+                }
+            }
+
+            // Notify the adapter that the dataset has changed
+            eventAdapter.notifyDataSetChanged();
+
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +73,7 @@ public class EditEventsFragment extends Fragment {
 
         return view;
     }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

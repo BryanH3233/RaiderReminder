@@ -15,6 +15,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private List<eventClass> events;
 
+
     public EventAdapter(List<eventClass> events) {
         this.events = events;
     }
@@ -26,12 +27,21 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         return new EventViewHolder(view);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         eventClass event = events.get(position);
         holder.eventNameTextView.setText(event.getName());
-        holder.eventCheckBox.setChecked(false); // Set initial state, modify based on event properties
+        holder.eventCheckBox.setChecked(false);
+        // Set the checked status and handle the click event
+        holder.eventCheckBox.setChecked(events.get(position).isChecked());
+        holder.eventCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            events.get(position).setChecked(isChecked);
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -48,4 +58,5 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             eventNameTextView = itemView.findViewById(R.id.eventTextView);
         }
     }
+
 }
