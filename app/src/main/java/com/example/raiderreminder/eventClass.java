@@ -110,6 +110,13 @@ public class eventClass implements Serializable{
         return sdf.format(task.getTime());
     }
 
+    public String getTime12Hour() {
+        // Format the time as a string in 12-hour format
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+        return sdf.format(task.getTime());
+    }
+
+
     public Calendar getTask() {
         return task;
     }
