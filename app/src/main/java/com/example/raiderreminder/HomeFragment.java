@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
             appCompatActivity.setSupportActionBar(homeToolBar);
 
             // Set the title of the toolbar
-            appCompatActivity.getSupportActionBar().setTitle("");
+            appCompatActivity.getSupportActionBar().setTitle("Today's Events");
 
             // Set a subtitle with the current date and time, and update it every second
             Handler handler = new Handler();

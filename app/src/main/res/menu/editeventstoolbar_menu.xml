@@ -11,4 +11,11 @@
         android:iconTint="@color/black"
         />
 
+    <item
+        android:id="@+id/edit"
+        android:title="Edit"
+        app:showAsAction="always"
+        android:icon="@drawable/baseline_edit_calendar_24"
+        android:iconTint="@color/black"
+        />
 </menu>

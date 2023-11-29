@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- fragment_editevents.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,52 +9,27 @@
 
     <include
         android:id="@+id/editeventstoolbar"
-        layout="@layout/editeventstoolbar"
-        />
+        layout="@layout/editeventstoolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/editeventstoolbar"
-        android:layout_marginBottom="100dp">
+        android:layout_below="@+id/editeventstoolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/editeventslayout"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/eetextview1"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/eventsRecyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="View Text"
-                app:layout_constraintBottom_toBottomOf="@id/editeventslayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/eetextview1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/editeventslayout"/>
-
-            <Button
-                android:id="@+id/eebutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"
-                android:backgroundTint="@color/MT_Blue"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/eetextview1"
-                app:layout_constraintBottom_toBottomOf="@id/editeventslayout"/>
-
+                android:padding="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/event_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
 </RelativeLayout>
+

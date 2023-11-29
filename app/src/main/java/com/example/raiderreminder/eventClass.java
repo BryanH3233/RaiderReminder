@@ -25,6 +25,7 @@ public class eventClass implements Serializable{
     private int minute = 0;
     private int second = 0;
     private String location = "None";
+    private boolean isChecked;
     private String notificationMessage = eventName + " at " + year + "/" + month + "/" + day + " "
             + hour + ":" + minute + ", in " + location; //message for notification
 
@@ -114,6 +115,15 @@ public class eventClass implements Serializable{
         // Format the time as a string in 12-hour format
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
         return sdf.format(task.getTime());
+    }
+
+    // Getter and setter for isChecked
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 
 
