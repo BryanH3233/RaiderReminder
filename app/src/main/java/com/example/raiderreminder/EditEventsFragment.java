@@ -1,52 +1,38 @@
 package com.example.raiderreminder;
 
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class EditEventsFragment extends Fragment {
 
-
+    private RecyclerView recyclerView;
+    private EventAdapter eventAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-
         View view = inflater.inflate(R.layout.fragment_editevents, container, false);
 
-        //Create the home tool bar
-        Toolbar editeventsToolBar = view.findViewById(R.id.editeventstoolbar);
+        // Set up RecyclerView
+        recyclerView = view.findViewById(R.id.eventsRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Ensure that the parent activity is an AppCompatActivity
-        if (getActivity() instanceof AppCompatActivity) {
-            AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-            appCompatActivity.setSupportActionBar(editeventsToolBar);
+        // Get the list of events from the EventManager
+        List<eventClass> allEvents = EventManager.getEvents();
 
-            // Set the title of the toolbar
-            appCompatActivity.getSupportActionBar().setTitle("Edit Events");
-        }
-
+        // Create and set the adapter
+        eventAdapter = new EventAdapter(allEvents);
+        recyclerView.setAdapter(eventAdapter);
 
         return view;
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Inflate the menu resource
-        inflater.inflate(R.menu.editeventstoolbar_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
     }
 }
