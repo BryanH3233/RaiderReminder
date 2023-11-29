@@ -190,7 +190,7 @@ public class eventClass implements Serializable{
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         if (alarmManager != null) {
             alarmManager.cancel(pendingIntent);
-            Toast.makeText(context, "Alarm canceled for " + alarmTimeInMillis, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Alarm canceled for " + uniqueRequestCode, Toast.LENGTH_SHORT).show();
         }
     }
 

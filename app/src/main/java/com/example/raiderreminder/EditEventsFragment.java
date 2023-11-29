@@ -32,6 +32,7 @@ public class EditEventsFragment extends Fragment {
             for (Iterator<eventClass> iterator = allEvents.iterator(); iterator.hasNext(); ) {
                 eventClass event = iterator.next();
                 if (event.isChecked()) {
+                    event.cancelAlarms(requireContext());
                     iterator.remove();
                 }
             }
