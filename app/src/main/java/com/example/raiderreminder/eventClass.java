@@ -144,7 +144,7 @@ public class eventClass implements Serializable{
     public void setAlarm(Context context, long alarmTimeInMillis, int type) {
         // Check if the alarm time is in the past
         if (alarmTimeInMillis <= System.currentTimeMillis()) {
-            Toast.makeText(context, "Cannot set alarm for past time", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Cannot set alarm for past time", Toast.LENGTH_SHORT).show();
             return;
         }
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
