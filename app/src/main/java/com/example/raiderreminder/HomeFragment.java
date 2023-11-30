@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+
     private void updateDateTime(androidx.appcompat.app.ActionBar actionBar) {
         // Get the current date and time
         Date currentDate = Calendar.getInstance().getTime();

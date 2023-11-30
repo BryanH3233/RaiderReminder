@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import java.util.List;
@@ -17,6 +19,13 @@ public class AllEventsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_allevents, container, false);
+
+        // Set up the toolbar
+        Toolbar eaToolbar = view.findViewById(R.id.allEtoolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(eaToolbar);
+
+        // Set the title of the toolbar
+        ((AppCompatActivity) requireActivity()).getSupportActionBar().setTitle("All Events");
 
         // Get the TextViews from the layout
         TextView textView1 = view.findViewById(R.id.textView);
