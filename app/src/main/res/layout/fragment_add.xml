@@ -17,15 +17,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
         android:hint="Event"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/lightGray"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/lightGray"
+        app:hintTextColor="@color/black"
         >
 
 
@@ -45,15 +46,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="102dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
         android:hint="Day"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/lightGray"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/lightGray"
+        app:hintTextColor="@color/black"
         >
 
 
@@ -73,15 +75,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="172dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
         android:hint="Month"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/lightGray"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/lightGray"
+        app:hintTextColor="@color/black"
         >
 
 
@@ -101,15 +104,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="242dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
         android:hint="Year"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/lightGray"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/lightGray"
+        app:hintTextColor="@color/black"
         >
 
 
@@ -129,15 +133,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="312dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
         android:hint="Hour"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/lightGray"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/lightGray"
+        app:hintTextColor="@color/black"
         >
 
 
@@ -157,15 +162,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="382dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
         android:hint="Minute"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/lightGray"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/lightGray"
+        app:hintTextColor="@color/black"
         >
 
 
@@ -186,15 +192,16 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="452dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/black"
         android:hint="Location"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/lightGray"
+        app:boxStrokeColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        app:hintTextColor="@color/lightGray"
+        app:hintTextColor="@color/black"
         >
 
 
