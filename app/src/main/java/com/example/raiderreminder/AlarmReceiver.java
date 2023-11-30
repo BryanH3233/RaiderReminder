@@ -17,11 +17,12 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // Retrieve AlarmInfo from the Intent
+        // Retrieve eventClass from the Intent
         eventClass event = (eventClass) intent.getSerializableExtra("eventClass");
 
         createNotificationChannel(context);
 
+        //Builds Notifications
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.baseline_notification_important_24)
                 .setContentTitle("Reminder Notification")

@@ -144,7 +144,7 @@ public class eventClass implements Serializable{
     public void setAlarm(Context context, long alarmTimeInMillis, int type) {
         // Check if the alarm time is in the past
         if (alarmTimeInMillis <= System.currentTimeMillis()) {
-            Toast.makeText(context, "Cannot set alarm for past time", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Cannot set alarm for past time", Toast.LENGTH_SHORT).show();
             return;
         }
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -156,7 +156,8 @@ public class eventClass implements Serializable{
         // Use a combination of uniqueId and requestCode to create a unique identifier
         int uniqueRequestCode = uniqueId * 1000 + type;
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueRequestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueRequestCode, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
 
         // Cancel any existing alarms with the same requestCode
         alarmManager.cancel(pendingIntent);
