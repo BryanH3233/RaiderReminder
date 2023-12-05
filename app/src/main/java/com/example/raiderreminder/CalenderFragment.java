@@ -39,8 +39,6 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
 
 
 
-    private ListView eventListView; // Add this ListView
-
     // Called when the fragment is created
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,8 +56,6 @@ public class CalenderFragment extends Fragment implements CalenderAdapter.OnItem
         initWidgets(view);
         selectedDate = LocalDate.now();
         setMonthView();
-
-
 
         // Return the view for the fragment
         return view;

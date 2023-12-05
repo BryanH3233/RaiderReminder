@@ -70,19 +70,6 @@ public class HomeFragment extends Fragment {
     }
 
 
-    private void updateDateTime(androidx.appcompat.app.ActionBar actionBar) {
-        // Get the current date and time
-        Date currentDate = Calendar.getInstance().getTime();
-
-        // Format the date and time
-        String formattedDateTime = DateFormat.format("EEEE, MMM dd, yyyy hh:mm a", currentDate).toString();
-
-        // Set the formatted date and time to the ActionBar title
-        if (actionBar != null) {
-            actionBar.setTitle(formattedDateTime);
-        }
-    }
-
     private void displayTodayEvents() {
         // Get the list of events from the EventManager
         List<eventClass> allEvents = EventManager.getEvents();

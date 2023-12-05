@@ -15,8 +15,6 @@ public class EventManager {
             @Override
             public int compare(eventClass event1, eventClass event2) {
                 // Compare events based on date and time
-                // You may need to implement this comparison based on your requirements
-                // For simplicity, I'm assuming events with earlier date and time are "smaller"
                 if (event1.getYear() != event2.getYear()) {
                     return Integer.compare(event1.getYear(), event2.getYear());
                 } else if (event1.getMonth() != event2.getMonth()) {
@@ -53,16 +51,6 @@ public class EventManager {
             // Check if the event has already passed
             if (event.task.before(currentCalendar)) {
                 iterator.remove(); // Remove the expired event
-            }
-        }
-    }
-    public static void removeEventFromList(String eventName) {
-        for (Iterator<eventClass> iterator = events.iterator(); iterator.hasNext(); ) {
-            eventClass event = iterator.next();
-            if (event.getName().equals(eventName)) {
-                iterator.remove();
-                // Assuming each event has a unique name, you can break out of the loop once found
-                break;
             }
         }
     }

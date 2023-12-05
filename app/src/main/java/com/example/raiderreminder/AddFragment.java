@@ -20,9 +20,6 @@ public class AddFragment extends Fragment {
     private TextInputEditText inputNameEditText, inputDayEditText, inputMonthEditText,
             inputYearEditText, inputHourEditText, inputMinuteEditText, inputLocationEditText;
     private Button bttnDone;
-    private EventManager eventsList = new EventManager();
-    private eventClass event = new eventClass();
-    //EventManager eventsList = new EventManager();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

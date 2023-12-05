@@ -58,7 +58,7 @@ class CalenderAdapter extends RecyclerView.Adapter<CalenderViewHolder>
         });
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // Return the size of your dataset
     @Override
     public int getItemCount()
     {
