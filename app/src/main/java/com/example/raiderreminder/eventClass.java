@@ -156,7 +156,8 @@ public class eventClass implements Serializable{
         // Use a combination of uniqueId and requestCode to create a unique identifier
         int uniqueRequestCode = uniqueId * 1000 + type;
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueRequestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, uniqueRequestCode, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
 
         // Cancel any existing alarms with the same requestCode
         alarmManager.cancel(pendingIntent);
