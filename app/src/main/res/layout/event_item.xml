@@ -6,12 +6,14 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
+    <!-- creates a check box -->
     <CheckBox
         android:id="@+id/eventCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"/>
 
+    <!-- creates the text view to the right of check box -->
     <TextView
         android:id="@+id/eventTextView"
         android:layout_width="0dp"

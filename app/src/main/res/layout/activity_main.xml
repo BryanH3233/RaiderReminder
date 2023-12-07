@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:id="@+id/frame_layout"/>
 
+        <!-- Creates the bottom app bar -->
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
@@ -22,6 +23,7 @@
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="20dp">
 
+            <!-- Creates the bottom appbar icons from the bottom_menu -->
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="wrap_content"
@@ -35,6 +37,7 @@
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
+        <!-- Creates the floating add button -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"

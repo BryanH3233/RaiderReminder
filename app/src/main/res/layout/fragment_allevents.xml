@@ -7,11 +7,13 @@
     tools:context=".AllEventsFragment"
     android:background="@color/light_blue">
 
+    <!-- adds the tool  bar to the top of layout -->
     <include
         android:id="@+id/allEtoolbar"
         layout="@layout/editeventstoolbar">
     </include>
 
+    <!-- Create the scroll view to be able to scroll through events -->
     <ScrollView
         android:id="@+id/alleventsScrollview"
         android:layout_width="match_parent"
@@ -25,6 +27,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <!-- create text views one under another to display events -->
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"

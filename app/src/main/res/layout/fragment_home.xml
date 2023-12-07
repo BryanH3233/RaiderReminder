@@ -7,11 +7,13 @@
     tools:context=".HomeFragment"
     android:background="@color/light_blue">
 
+    <!-- adds toolbar to top of page -->
     <include
         android:id="@+id/hometoolbar"
         layout="@layout/hometoolbar"
         />
 
+    <!-- adds scroll view to scroll through events -->
     <ScrollView
         android:id="@+id/homescroll"
         android:layout_width="match_parent"
@@ -25,6 +27,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
+            <!-- creates text view to display event info -->
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
